@@ -64,6 +64,10 @@ AssetsManager.prototype.addDirectory = function (path, dirEntry, callback) {
   next();
 };
 
+AssetsManager.prototype.addFile = function (file, callback) {
+  this.api.addFile(file, callback);
+};
+
 AssetsManager.prototype.addRoot = function (dirEntry, callback) {
   this.addDirectory('', dirEntry, callback);
 };
