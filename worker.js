@@ -40,4 +40,4 @@ workerproxy({
     worldManager.open(file);
     callback(null, worldManager.metadata);
   }
-});
+}, {catchErrors: true});
