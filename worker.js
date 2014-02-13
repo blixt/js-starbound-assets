@@ -26,7 +26,7 @@ workerproxy({
 
   getRegion: function (x, y, callback) {
     var region = worldManager.getRegion(x, y);
-    callback.transfer([region.buffer], region);
+    callback.transfer([region.buffer], null, region);
   },
 
   openWorld: function (file, callback) {

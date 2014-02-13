@@ -10,11 +10,15 @@ function AssetsManager(opt_options) {
   merge(options, opt_options);
   Object.freeze(options);
 
-  var worker = new Worker(options.workerPath);
-
-  this.api = workerproxy(worker);
   this.options = options;
-  this._worker = worker;
+
+  var worker = new Worker(options.workerPath);
+  this.api = workerproxy(worker);
+
+  // Reroute some functions to the worker.
+  this.addFile = this.api.addFile;
+  this.getBlobURL = this.api.getBlobURL;
+  this.openWorld = this.api.openWorld;
 }
 
 /**
@@ -54,7 +58,7 @@ AssetsManager.prototype.addDirectory = function (path, dirEntry, callback) {
         } else {
           pending++;
           entry.file(function (file) {
-            self.api.addFile(entryPath, file, decrementPending);
+            self.addFile(entryPath, file, decrementPending);
           }, decrementPending);
         }
       });
@@ -64,16 +68,8 @@ AssetsManager.prototype.addDirectory = function (path, dirEntry, callback) {
   next();
 };
 
-AssetsManager.prototype.addFile = function (file, callback) {
-  this.api.addFile(file, callback);
-};
-
 AssetsManager.prototype.addRoot = function (dirEntry, callback) {
   this.addDirectory('', dirEntry, callback);
-};
-
-AssetsManager.prototype.getBlobURL = function (path, callback) {
-  this.api.getBlobURL(path, callback);
 };
 
 exports.AssetsManager = AssetsManager;
