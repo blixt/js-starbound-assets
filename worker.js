@@ -6,6 +6,8 @@ var worldmanager = require('./lib/worldmanager');
 var db = assetsdb.create();
 var worldManager = worldmanager.create();
 
+var fileReader = new FileReaderSync();
+
 workerproxy({
   addFile: function (path, file, callback) {
     // TODO: Support webkitRelativePath property.
@@ -22,6 +24,11 @@ workerproxy({
 
   getBlobURL: function (path, callback) {
     callback(null, db.getBlobURL(path));
+  },
+
+  getJSON: function (path, callback) {
+    var blob = db.getBlob(path);
+    callback(null, JSON.parse(fileReader.readAsText(blob)));
   },
 
   getRegion: function (x, y, callback) {

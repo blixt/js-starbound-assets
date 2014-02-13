@@ -20,6 +20,7 @@ function AssetsManager(opt_options) {
   // Reroute some functions to the worker.
   this.addFile = this.api.addFile;
   this.getBlobURL = this.api.getBlobURL;
+  this.getJSON = this.api.getJSON;
   this.openWorld = this.api.openWorld;
 }
 
