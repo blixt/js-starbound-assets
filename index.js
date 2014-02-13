@@ -1,6 +1,8 @@
 var merge = require('merge');
 var workerproxy = require('workerproxy');
 
+var region = require('./lib/region');
+
 function AssetsManager(opt_options) {
   var options = {
     workerPath: __dirname + '/worker.js'
@@ -70,6 +72,12 @@ AssetsManager.prototype.addDirectory = function (path, dirEntry, callback) {
 
 AssetsManager.prototype.addRoot = function (dirEntry, callback) {
   this.addDirectory('', dirEntry, callback);
+};
+
+AssetsManager.prototype.getRegion = function (x, y, callback) {
+  this.api.getRegion(x, y, function (err, regionData) {
+    callback(null, new region.Region(regionData));
+  });
 };
 
 exports.AssetsManager = AssetsManager;
