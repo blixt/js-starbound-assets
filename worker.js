@@ -26,14 +26,14 @@ workerproxy({
     callback(null, db.getBlobURL(path));
   },
 
-  getJSON: function (path, callback) {
-    var blob = db.getBlob(path);
-    callback(null, JSON.parse(fileReader.readAsText(blob)));
-  },
-
   getRegion: function (x, y, callback) {
     var region = worldManager.getRegion(x, y);
     callback.transfer([region.buffer], null, region);
+  },
+
+  loadResources: function (extension, callback) {
+    var resources = db.loadResources(extension);
+    callback(null, resources);
   },
 
   openWorld: function (file, callback) {
