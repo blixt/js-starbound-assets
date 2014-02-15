@@ -31,8 +31,15 @@ workerproxy({
     callback.transfer([region.buffer], null, region);
   },
 
-  loadResources: function (extension, callback) {
-    var resources = db.loadResources(extension);
+  loadObjectResources: function (callback) {
+    callback(null, db.loadResources('.object'));
+  },
+
+  loadTileResources: function (callback) {
+    var resources = {
+      materials: db.loadResources('.material'),
+      matmods: db.loadResources('.matmod')
+    };
     callback(null, resources);
   },
 

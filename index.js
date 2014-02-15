@@ -21,7 +21,8 @@ function AssetsManager(opt_options) {
   this.addFile = this.api.addFile;
   this.getBlobURL = this.api.getBlobURL;
   this.getJSON = this.api.getJSON;
-  this.loadResources = this.api.loadResources;
+  this.loadObjectResources = this.api.loadObjectResources;
+  this.loadTileResources = this.api.loadTileResources;
   this.openWorld = this.api.openWorld;
 }
 
