@@ -24,15 +24,7 @@ workerproxy({
     callback(null, db.getBlobURL(path));
   },
 
-  loadObjectResources: function (callback) {
-    callback(null, db.loadResources('.object'));
-  },
-
-  loadTileResources: function (callback) {
-    var resources = {
-      materials: db.loadResources('.material'),
-      matmods: db.loadResources('.matmod')
-    };
-    callback(null, resources);
+  loadResources: function (extension, callback) {
+    callback(null, db.loadResources(extension));
   }
 }, {catchErrors: true});
