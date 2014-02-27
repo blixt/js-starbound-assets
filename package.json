@@ -1,6 +1,6 @@
 {
   "name": "starbound-assets",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "This library enables loading Starbound assets via a Web Worker.",
   "author": "Blixt <me@blixt.org>",
   "license": "MIT",
