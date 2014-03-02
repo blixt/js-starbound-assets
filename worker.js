@@ -24,6 +24,10 @@ workerproxy({
     callback(null, db.getBlobURL(path));
   },
 
+  getJSON: function (path, callback) {
+    callback(null, db.getJSON(path));
+  },
+
   loadResources: function (extension, callback) {
     callback(null, db.loadResources(extension));
   }
