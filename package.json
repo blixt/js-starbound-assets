@@ -15,8 +15,8 @@
   "dependencies": {
     "color-convert": "^0.5.2",
     "merge": "^1.2.0",
-    "starbound-files": "~0.7.0",
-    "workerproxy": "~0.3.0"
+    "starbound-files": "^0.8.0",
+    "workerproxy": "^0.3.0"
   },
   "devDependencies": {}
 }
